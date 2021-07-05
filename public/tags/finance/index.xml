@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>finance on ~cap</title>
+    <link>https://capricorn.github.io/tags/finance/</link>
+    <description>Recent content in finance on ~cap</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 05 Jul 2021 10:31:32 -0500</lastBuildDate><atom:link href="https://capricorn.github.io/tags/finance/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Financing as Insurance</title>
+      <link>https://capricorn.github.io/posts/financing-as-insurance/</link>
+      <pubDate>Mon, 05 Jul 2021 10:31:32 -0500</pubDate>
+      
+      <guid>https://capricorn.github.io/posts/financing-as-insurance/</guid>
+      <description>Say you have limited savings, but discover you must make a sizeable purchase. This is a purchase you could afford, but would significantly eat away at your savings. In this situation, going broke is a possibility if you happen to lose your job soon after.
+One approach is to instead treat financing like insurance. In this case, treat the interest as a premium paid. Instead of heavily reducing your bankroll, a monthly payment is made over a longer period of time.</description>
+    </item>
+    
+  </channel>
+</rss>
