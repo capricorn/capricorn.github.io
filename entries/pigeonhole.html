@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>index</title>
+  <title>pigeonhole</title>
   <style>
     html {
       color: #1a1a1a;
@@ -172,23 +172,38 @@
   <![endif]-->
 </head>
 <body>
-<h1 id="idle-hours">Idle Hours</h1>
-<blockquote>
-<p>I never in all my walks came across a man engaged in so simple and
-natural an occupation as building his house.</p>
-</blockquote>
-<ul>
-<li><code>06/16/2024</code>  <a href="./entries/pigeonhole.html">A
-Pigeonhole Proof</a></li>
-<li><code>06/13/2024</code>  <a href="./entries/regex_gen.html">Minimum
-Hamming Distance Convolution Traversal, Part I</a></li>
-<li><code>06/09/2024</code>  <a
-href="./entries/redistribution.html">Utilitarianism &amp; Wealth
-Redistribution Noodlings</a></li>
-<li><code>06/05/2024</code>  <a href="./entries/random_book.html">When
-Was That Book Last Checked Out?</a></li>
-<li><code>06/05/2024</code>  <a
-href="./entries/common_truths.html">Common Sources of Truth</a></li>
-</ul>
+<h1 id="a-pigeonhole-proof">A Pigeonhole Proof</h1>
+<p>Take <span class="math inline"><em>n</em> ≥ 0</span> to distribute
+over <span class="math inline"><em>k</em> &gt; 0</span> bins. <span
+class="math inline"><em>i</em> ∈ [0, <em>k</em>)</span> represents bin
+<span class="math inline"><em>i</em></span> and <span
+class="math inline"><em>V</em>(<em>i</em>)</span> is the value
+apportioned to each bin such that <span
+class="math inline">∑<sub><em>i</em> ∈ [0, <em>k</em>)</sub><em>V</em>(<em>i</em>) = <em>n</em></span>.</p>
+<p>The claim: <span
+class="math inline">(∃<em>i</em>,<em>V</em>(<em>i</em>)&lt;<em>n</em>/<em>k</em>) ⟹ (∃<em>j</em>≠<em>i</em>,<em>V</em>(<em>j</em>)&gt;<em>n</em>/<em>k</em>)</span>.</p>
+<p>Take the remaining <span class="math inline"><em>k</em> − 1</span>
+bins aside from <span class="math inline"><em>i</em></span>. I restrict
+the remaining bins to contain at most <span
+class="math inline"><em>n</em>/<em>k</em></span>. The largest sum of
+these remaining bins is then <span
+class="math inline">(<em>k</em>−1)(<em>n</em>/<em>k</em>)</span>.
+Therefore: <span
+class="math display">(<em>k</em>−1)(<em>n</em>/<em>k</em>) + <em>V</em>(<em>i</em>) &lt; (<em>k</em>−1)(<em>n</em>/<em>k</em>) + (<em>n</em>/<em>k</em>)</span></p>
+<p>i.e.</p>
+<p><span
+class="math display">(<em>k</em>−1)(<em>n</em>/<em>k</em>) + <em>V</em>(<em>i</em>) &lt; <em>n</em></span></p>
+<p>As <span class="math inline"><em>V</em>(<em>i</em>)</span> is fixed,
+one of the remaining <span class="math inline"><em>k</em> − 1</span>
+bins must be <span
+class="math inline"> &gt; <em>n</em>/<em>k</em></span>. <span
+class="math inline">◼</span></p>
+<p>The typical pigeonhole claim is that there always exists a bin <span
+class="math inline"> ≥ <em>n</em>/<em>k</em></span>. Assume all bins
+equal <span class="math inline"><em>n</em>/<em>k</em></span>; true.
+Otherwise, assume a bin <span
+class="math inline"> &gt; <em>n</em>/<em>k</em></span>; true. And
+finally, take the case described above that a bin is <span
+class="math inline"> &lt; <em>n</em>/<em>k</em></span>; true.</p>
 </body>
 </html>
