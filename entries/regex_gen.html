@@ -165,7 +165,6 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
     pre > code.sourceCode > span { line-height: 1.25; }
@@ -231,6 +230,10 @@
     code span.vs { color: #4070a0; } /* VerbatimString */
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -241,23 +244,26 @@ Hamming Distance Convolution Traversal, Part I</h1>
 <p>Say that you want to generate a regex of the form</p>
 <pre><code>a*b*</code></pre>
 <p>The following describes valid strings of this type: <span
-class="math display"><em>i</em>, <em>j</em> ≥ 0, <em>a</em><sup><em>i</em></sup><em>b</em><sup><em>j</em></sup></span></p>
-<p>e.g. <span
-class="math inline"><em>a</em><sup>3</sup><em>b</em><sup>0</sup> = <code>aaa</code></span></p>
+class="math display">\[
+i,j\geq 0, a^{i}b^{j}
+\]</span></p>
+<p>e.g. <span class="math inline">\(a^3b^0=\texttt{aaa}\)</span></p>
 <p>Next, another constraint: only generate strings of length <span
-class="math inline"><em>l</em></span>. That is, <span
-class="math display"><em>i</em> + <em>j</em> = <em>l</em></span></p>
+class="math inline">\(l\)</span>. That is, <span class="math display">\[
+i+j=l
+\]</span></p>
 <p>which is a convolution. I will write a convolution of <span
-class="math inline"><em>k</em></span> integers that sum to <span
-class="math inline"><em>l</em></span> as <span
-class="math inline">Conv<sub><em>l</em>, <em>k</em></sub></span>. This
-represents the set of all solutions as k tuples.</p>
+class="math inline">\(k\)</span> integers that sum to <span
+class="math inline">\(l\)</span> as <span
+class="math inline">\(\text{Conv}_{l,k}\)</span>. This represents the
+set of all solutions as k tuples.</p>
 <p>For now I’ll just consider 2-convolutions, i.e. <span
-class="math inline">Conv<sub><em>l</em>, 2</sub></span>. It’s definition
-is: <span
-class="math display">Conv<sub><em>l</em>, 2</sub> = {(<em>a</em>,<em>b</em>)|<em>a</em>, <em>b</em> ≥ 0, <em>a</em> + <em>b</em> = <em>l</em>}</span></p>
+class="math inline">\(\text{Conv}_{l,2}\)</span>. It’s definition is:
+<span class="math display">\[
+\text{Conv}_{l,2} = \{ (a,b) | a,b\geq 0, a+b=l \}
+\]</span></p>
 <p>So to generate <code>a*b*</code> of a fixed length <span
-class="math inline"><em>l</em></span>, one option is to traverse all the
+class="math inline">\(l\)</span>, one option is to traverse all the
 2-convolutions and generate the string from it, something like</p>
 <div class="sourceCode" id="cb2"><pre
 class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>strings <span class="op">=</span> [ <span class="st">&quot;a&quot;</span><span class="op">*</span>i <span class="op">+</span> <span class="st">&quot;b&quot;</span><span class="op">*</span>j <span class="op">+</span> <span class="st">&quot;c&quot;</span><span class="op">*</span>k <span class="cf">for</span> i,j,k <span class="kw">in</span> convolutions2(l) ]</span></code></pre></div>
@@ -275,8 +281,9 @@ little as possible. This algorithm doesn’t exactly convince me that this
 is the best order for that purpose. But this is skipping ahead; first,
 “differs” needs defined.</p>
 <p>Hamming distance is appropriate for this. Given two 2-convolutions,
-the distance is: <span
-class="math display"><em>H</em>(<em>a</em>,<em>b</em>) = |<em>a</em><sub>0</sub>−<em>b</em><sub>0</sub>| + |<em>a</em><sub>1</sub>−<em>b</em><sub>1</sub>|</span></p>
+the distance is: <span class="math display">\[
+H(a,b) = |a_0-b_0| + |a_1-b_1|
+\]</span></p>
 <div class="sourceCode" id="cb4"><pre
 class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> conv_dist(a, b):</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(<span class="bu">map</span>(<span class="bu">abs</span>, <span class="bu">map</span>(<span class="kw">lambda</span> t: t[<span class="dv">0</span>]<span class="op">-</span>t[<span class="dv">1</span>], <span class="bu">zip</span>(a,b))))</span></code></pre></div>
@@ -284,35 +291,35 @@ class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a hr
 strings equal.</p>
 <p>The naive approach is to check all path permutations and select
 whichever has the smallest distance sum. If <span
-class="math inline"><em>V</em> = Conv<sub><em>l</em>, <em>k</em></sub></span>
-this would require <span class="math inline">|<em>V</em>|!</span>
-iterations which is not feasible for large <span
-class="math inline">|<em>V</em>|</span>. A better idea: since we’re
-dealing with adjacency and paths, what about a graph representation?</p>
+class="math inline">\(V=\text{Conv}_{l,k}\)</span> this would require
+<span class="math inline">\(|V|!\)</span> iterations which is not
+feasible for large <span class="math inline">\(|V|\)</span>. A better
+idea: since we’re dealing with adjacency and paths, what about a graph
+representation?</p>
 <p>To represent the problem as a graph, each 2-convolution is
 represented by a node. The graph is complete: every node has an edge to
 every other node. The weight of an edge is the hamming distance between
 the two nodes.</p>
 <p>The objective then is to find the graph traversal that results in the
 minimum edge weight sum. Intuitively, since the graph is complete, the
-optimal move from one node <span class="math inline"><em>n</em></span>
-to another is the edge with the smallest distance.</p>
+optimal move from one node <span class="math inline">\(n\)</span> to
+another is the edge with the smallest distance.</p>
 <p>While the above explains how to select the next node, what about the
 initial node? My initial choice is <span
-class="math inline">(0,<em>l</em>)</span>. Why?</p>
+class="math inline">\((0,l)\)</span>. Why?</p>
 <p>First, what would a minimum edit look like? For a 2-convolution, any
-of <span class="math inline">{(+1,−1), (−1,+1)}</span>. These two
-clearly preserve the sum, i.e. <span
-class="math inline"><em>a</em> + <em>b</em> = (<em>a</em>+1) + (<em>b</em>−1) = (<em>a</em>−1) + (<em>b</em>+1) = <em>l</em></span>.
-<span class="math inline">(0,0)</span> is the other solution that
+of <span class="math inline">\(\{ (+1,-1), (-1,+1) \}\)</span>. These
+two clearly preserve the sum, i.e. <span
+class="math inline">\(a+b=(a+1)+(b-1)=(a-1)+(b+1)=l\)</span>. <span
+class="math inline">\((0,0)\)</span> is the other solution that
 preserves the sum but obviously performs no transition. N.B. there are
 some exceptions w.r.t bounds.</p>
 <p>With this in mind, starting at <span
-class="math inline">(0,<em>l</em>)</span> would leave no choice but
-<span class="math inline">(1,<em>l</em>−1)</span>. Since a node is only
-visited once, the next minimum change leads to <span
-class="math inline">(2,<em>l</em>−2)</span> and so on. Eventually this
-leads to <span class="math inline">(<em>l</em>,0)</span> covering all
+class="math inline">\((0,l)\)</span> would leave no choice but <span
+class="math inline">\((1,l-1)\)</span>. Since a node is only visited
+once, the next minimum change leads to <span
+class="math inline">\((2,l-2)\)</span> and so on. Eventually this leads
+to <span class="math inline">\((l,0)\)</span> covering all
 convolutions.</p>
 <p>Putting everything together, here’s the graph traversal in
 Python:</p>
@@ -383,16 +390,15 @@ class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a hr
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>aaaaaaaaab</span>
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>aaaaaaaaaa</span></code></pre></div>
 <p>Concretely it seems to work for 2-convolutions… but will it work for
-k-convolutions where <span class="math inline"><em>k</em> &gt; 2</span>?
-Some questions:</p>
+k-convolutions where <span class="math inline">\(k\gt 2\)</span>? Some
+questions:</p>
 <ul>
 <li>For any k-convolution, are all edges on the minimum path weight
 2?</li>
 <li>Is the traditional k-convolution generation always equivalent to the
 minimum path?</li>
-<li>The prior examples used <span
-class="math inline"><em>l</em> = 10</span>. Does it work for all <span
-class="math inline"><em>l</em> ≥ 0</span>?</li>
+<li>The prior examples used <span class="math inline">\(l=10\)</span>.
+Does it work for all <span class="math inline">\(l\geq 0\)</span>?</li>
 </ul>
 <p><a href="https://github.com/capricorn/convolutions">Post code,
 etc</a></p>

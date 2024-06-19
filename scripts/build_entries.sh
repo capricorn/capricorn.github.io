@@ -7,5 +7,5 @@ cd root/entries
 for filename in *.md; do
     filename=${filename/.md}
     # TODO: Enable math jax
-    pandoc --standalone -o "../../entries/${filename}.html" "${filename}.md"
+    pandoc --mathjax --standalone -o "../../entries/${filename}.html" "${filename}.md"
 done

@@ -165,45 +165,47 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
 </head>
 <body>
 <h1 id="a-pigeonhole-proof">A Pigeonhole Proof</h1>
-<p>Take <span class="math inline"><em>n</em> ≥ 0</span> to distribute
-over <span class="math inline"><em>k</em> &gt; 0</span> bins. <span
-class="math inline"><em>i</em> ∈ [0, <em>k</em>)</span> represents bin
-<span class="math inline"><em>i</em></span> and <span
-class="math inline"><em>V</em>(<em>i</em>)</span> is the value
-apportioned to each bin such that <span
-class="math inline">∑<sub><em>i</em> ∈ [0, <em>k</em>)</sub><em>V</em>(<em>i</em>) = <em>n</em></span>.</p>
-<p>The claim: <span
-class="math inline">(∃<em>i</em>,<em>V</em>(<em>i</em>)&lt;<em>n</em>/<em>k</em>) ⟹ (∃<em>j</em>≠<em>i</em>,<em>V</em>(<em>j</em>)&gt;<em>n</em>/<em>k</em>)</span>.</p>
-<p>Take the remaining <span class="math inline"><em>k</em> − 1</span>
-bins aside from <span class="math inline"><em>i</em></span>. I restrict
-the remaining bins to contain at most <span
-class="math inline"><em>n</em>/<em>k</em></span>. The largest sum of
-these remaining bins is then <span
-class="math inline">(<em>k</em>−1)(<em>n</em>/<em>k</em>)</span>.
-Therefore: <span
-class="math display">(<em>k</em>−1)(<em>n</em>/<em>k</em>) + <em>V</em>(<em>i</em>) &lt; (<em>k</em>−1)(<em>n</em>/<em>k</em>) + (<em>n</em>/<em>k</em>)</span></p>
+<p>Take <span class="math inline">\(n\geq 0\)</span> to distribute over
+<span class="math inline">\(k&gt;0\)</span> bins. <span
+class="math inline">\(i\in [0,k)\)</span> represents bin <span
+class="math inline">\(i\)</span> and <span
+class="math inline">\(V(i)\)</span> is the value apportioned to each bin
+such that <span class="math inline">\(\sum_{i\in
+[0,k)}V(i)=n\)</span>.</p>
+<p>The claim: <span class="math inline">\((\exists i, V(i)\lt
+n/k)\implies (\exists j\neq i, V(j)\gt n/k)\)</span>.</p>
+<p>Take the remaining <span class="math inline">\(k-1\)</span> bins
+aside from <span class="math inline">\(i\)</span>. I restrict the
+remaining bins to contain at most <span
+class="math inline">\(n/k\)</span>. The largest sum of these remaining
+bins is then <span class="math inline">\((k-1)(n/k)\)</span>. Therefore:
+<span class="math display">\[
+(k-1)(n/k) + V(i) \lt (k-1)(n/k) + (n/k)
+\]</span></p>
 <p>i.e.</p>
-<p><span
-class="math display">(<em>k</em>−1)(<em>n</em>/<em>k</em>) + <em>V</em>(<em>i</em>) &lt; <em>n</em></span></p>
-<p>As <span class="math inline"><em>V</em>(<em>i</em>)</span> is fixed,
-one of the remaining <span class="math inline"><em>k</em> − 1</span>
-bins must be <span
-class="math inline"> &gt; <em>n</em>/<em>k</em></span>. <span
-class="math inline">◼</span></p>
+<p><span class="math display">\[
+(k-1)(n/k) + V(i) \lt n
+\]</span></p>
+<p>As <span class="math inline">\(V(i)\)</span> is fixed, one of the
+remaining <span class="math inline">\(k-1\)</span> bins must be <span
+class="math inline">\(\gt n/k\)</span>. <span
+class="math inline">\(\blacksquare\)</span></p>
 <p>The typical pigeonhole claim is that there always exists a bin <span
-class="math inline"> ≥ <em>n</em>/<em>k</em></span>. Assume all bins
-equal <span class="math inline"><em>n</em>/<em>k</em></span>; true.
-Otherwise, assume a bin <span
-class="math inline"> &gt; <em>n</em>/<em>k</em></span>; true. And
-finally, take the case described above that a bin is <span
-class="math inline"> &lt; <em>n</em>/<em>k</em></span>; true.</p>
+class="math inline">\(\geq n/k\)</span>. Assume all bins equal <span
+class="math inline">\(n/k\)</span>; true. Otherwise, assume a bin <span
+class="math inline">\(\gt n/k\)</span>; true. And finally, take the case
+described above that a bin is <span class="math inline">\(\lt
+n/k\)</span>; true.</p>
 </body>
 </html>

@@ -165,8 +165,11 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -174,23 +177,24 @@
 <body>
 <h1 id="utilitarianism-wealth-redistribution-noodlings">Utilitarianism
 &amp; Wealth Redistribution Noodlings</h1>
-<p>Say there are <span class="math inline"><em>T</em></span> total
-dollars distributed across <span class="math inline"><em>n</em></span>
-people; consider these dollars to signify “wealth.” To redistribute this
-<span class="math inline"><em>T</em></span> equally, each person would
-be apportioned <span class="math inline"><em>T</em>/<em>n</em></span>
-dollars, i.e. the mean.</p>
+<p>Say there are <span class="math inline">\(T\)</span> total dollars
+distributed across <span class="math inline">\(n\)</span> people;
+consider these dollars to signify “wealth.” To redistribute this <span
+class="math inline">\(T\)</span> equally, each person would be
+apportioned <span class="math inline">\(T/n\)</span> dollars, i.e. the
+mean.</p>
 <p>Now, there is occasionally a utilitarian argument for redistribution
 in that it will benefit the most people to do so. If the objective is to
 redistribute equally as discussed earlier, “most people” must mean
 &gt;50%. This can only be the case if, given the probability
-distribution of wealth <span class="math inline"><em>W</em></span> where
-<span class="math inline"><em>M</em></span> is its median and <span
-class="math inline"><em>μ</em></span> the mean, that the mean is greater
+distribution of wealth <span class="math inline">\(W\)</span> where
+<span class="math inline">\(M\)</span> is its median and <span
+class="math inline">\(\mu\)</span> the mean, that the mean is greater
 than the median:</p>
-<p><span
-class="math display"><em>X</em> ∼ <em>W</em>, ℙ(<em>X</em>≤<em>M</em>) &lt; ℙ(<em>X</em>≤<em>μ</em>)</span></p>
-<p><span class="math inline">ℙ(<em>X</em>≤<em>M</em>) = 0.5</span>, so a
+<p><span class="math display">\[
+X\sim W, \mathbb{P}(X\leq M) &lt; \mathbb{P}(X\leq\mu)
+\]</span></p>
+<p><span class="math inline">\(\mathbb{P}(X\leq M) = 0.5\)</span>, so a
 mean greater than the median implies that the majority of the population
 has less wealth than the mean. This is simply a necessary condition of
 the argument; otherwise equalizing will hurt more people than it
@@ -198,11 +202,11 @@ helps.</p>
 <p>What about considering the problem not as maximizing the number of
 beneficiaries but rather maximizing the net benefit to the group? That
 is, compute each individual’s benefit and sum these. It is well known
-that <span class="math inline"><em>μ</em></span> zeroes the differences
-of a sample <span class="math inline"><em>X</em></span>, i.e. <span
-class="math inline">∑<sub><em>x</em> ∈ <em>X</em></sub>(<em>x</em>−<em>μ</em>) = 0</span>.
-By this logic a redistribution effectively accomplishes nothing; money
-is ultimately just shuffled around, and the large loser’s loss cancels
-out the small gains of many winners.</p>
+that <span class="math inline">\(\mu\)</span> zeroes the differences of
+a sample <span class="math inline">\(X\)</span>, i.e. <span
+class="math inline">\(\sum_{x\in X}(x-\mu)=0\)</span>. By this logic a
+redistribution effectively accomplishes nothing; money is ultimately
+just shuffled around, and the large loser’s loss cancels out the small
+gains of many winners.</p>
 </body>
 </html>

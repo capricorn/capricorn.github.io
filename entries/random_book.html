@@ -165,7 +165,6 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
     pre > code.sourceCode > span { line-height: 1.25; }
@@ -231,6 +230,10 @@
     code span.vs { color: #4070a0; } /* VerbatimString */
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -256,14 +259,13 @@ of it as the library having a “grand opening.”</p>
 whatsoever.</p>
 <p>Let’s model the following example. A library has 1,000,000 books
 available. Every day, 1000 books are checked out at random.</p>
-<p>Therefore <span
-class="math inline"><em>p</em> = 1000/1000000 = 1/1000</span> is the
-probability that a given book is checked out each day. The probability
-distribution of the number of days until a given book is checked out is
-geometric, i.e. <span
-class="math inline"><em>X</em> ∼ <em>G</em><em>e</em><em>o</em>(1/1000)</span>.
-From this the expected number of days until checkout is <span
-class="math inline">𝔼(<em>X</em>) = 1/<em>p</em> = 1000</span>.</p>
+<p>Therefore <span class="math inline">\(p=1000/1000000=1/1000\)</span>
+is the probability that a given book is checked out each day. The
+probability distribution of the number of days until a given book is
+checked out is geometric, i.e. <span class="math inline">\(X\sim
+Geo(1/1000)\)</span>. From this the expected number of days until
+checkout is <span
+class="math inline">\(\mathbb{E}(X)=1/p=1000\)</span>.</p>
 <p>Now, go to this library and grab a book to checkout. Since the
 expectation of days until checkout is 1000 days, and <em>you yourself
 are performing a checkout</em>, then the expectation is that this book
