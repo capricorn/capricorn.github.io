@@ -15,3 +15,7 @@
 ## Snippets
 
 - [Working With Your Feet](./entries/work_with_feet.html)
+
+## An EWD Anthology
+
+- [A bagatelle for the left hand](https://www.cs.utexas.edu/~EWD/ewd08xx/EWD800.PDF)
