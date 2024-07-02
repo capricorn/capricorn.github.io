@@ -16,6 +16,8 @@
 
 - [Working With Your Feet](./entries/work_with_feet.html)
 
-## An EWD Anthology
+## That Devilish Dutchman Dijkstra
+
+_An EWD Anthology_
 
 - [A bagatelle for the left hand](https://www.cs.utexas.edu/~EWD/ewd08xx/EWD800.PDF)
