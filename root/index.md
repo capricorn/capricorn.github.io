@@ -21,3 +21,9 @@
 _An EWD Anthology_
 
 - [A bagatelle for the left hand](https://www.cs.utexas.edu/~EWD/ewd08xx/EWD800.PDF)
+
+## Search Engines
+
+- [Hacker News Search by Algolia](https://hn.algolia.com/)
+- [Lobsters Search](https://lobste.rs/search)
+- [Marginalia.nu](https://search.marginalia.nu/)
