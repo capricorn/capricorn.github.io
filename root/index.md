@@ -28,3 +28,7 @@ _An EWD Anthology_
 - [Hacker News Search by Algolia](https://hn.algolia.com/)
 - [Lobsters Search](https://lobste.rs/search)
 - [Marginalia.nu](https://search.marginalia.nu/)
+
+## Contact
+
+[📧](mailto:collinplmr+hello@gmail.com)
