@@ -30,6 +30,10 @@ _An EWD Anthology_
 - [Lobsters Search](https://lobste.rs/search)
 - [Marginalia.nu](https://search.marginalia.nu/)
 
+## Webring of Webrings
+
+- [Lainchan Webring](https://user-index.github.io/webring/)
+
 ## Contact
 
 [📧](mailto:collinplmr+hello@gmail.com)
