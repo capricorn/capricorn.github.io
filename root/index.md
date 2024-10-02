@@ -29,6 +29,7 @@ _An EWD Anthology_
 - [Hacker News Search by Algolia](https://hn.algolia.com/)
 - [Lobsters Search](https://lobste.rs/search)
 - [Marginalia.nu](https://search.marginalia.nu/)
+- [Kagi Small Web](https://kagi.com/smallweb)
 
 ## Webring of Webrings
 
