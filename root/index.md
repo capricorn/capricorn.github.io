@@ -4,6 +4,7 @@
 
 ## Thoughts
 
+- <code>10/05/2024</code>&nbsp;&nbsp;[HTML Element Uniqueness](./entries/html_uniqueness.html)
 - <code>10/01/2024</code>&nbsp;&nbsp;[Redefinition - Dependency Injection Alternative?](./entries/di_alternative.html)
 - <code>09/09/2024</code>&nbsp;&nbsp;[Experiment: HTML Scraping with Prolog](./entries/prolog_html.html)
 - <code>07/01/2024</code>&nbsp;&nbsp;[AST Syntax Highlighting with Prolog](./entries/prolog_ast_highlighter.html)
