@@ -23,6 +23,7 @@
 _An EWD Anthology_
 
 - [A bagatelle for the left hand](https://www.cs.utexas.edu/~EWD/ewd08xx/EWD800.PDF)
+- [Meta: Open Questions](./entries/dijkstra_questions.html)
 
 ## Search Engines
 
