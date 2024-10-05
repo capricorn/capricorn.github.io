@@ -36,6 +36,10 @@ _An EWD Anthology_
 
 - [Lainchan Webring](https://user-index.github.io/webring/)
 
+## Etc
+
+- [Bookmarklets](./entries/bookmarklets.html)
+
 ## Contact
 
 [📧](mailto:collinplmr+hello@gmail.com)
