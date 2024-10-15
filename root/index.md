@@ -37,10 +37,6 @@ _An EWD Anthology_
 - [Marginalia.nu](https://search.marginalia.nu/)
 - [Kagi Small Web](https://kagi.com/smallweb)
 
-## Webring of Webrings
-
-- [Lainchan Webring](https://user-index.github.io/webring/)
-
 ## Etc
 
 - [Bookmarklets](./entries/bookmarklets.html)
