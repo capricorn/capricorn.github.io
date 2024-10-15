@@ -40,7 +40,7 @@ _An EWD Anthology_
 
 ## Etc
 
-- [Bookmarklets](./entries/bookmarklets.html)
+- [Bookmarklets](https://gist.github.com/search?q=user%3Acapricorn+%23bookmarklet)
 
 ## Contact
 
