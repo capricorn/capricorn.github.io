@@ -18,6 +18,7 @@
 ## Reads
 
 - [Dijkstra on Lisp](https://kazimirmajorinc.com/Documents/Edsger-W-Dijkstra-on-Lisp/index.html)
+- [Hammock-driven Development](https://github.com/matthiasn/talk-transcripts/blob/master/Hickey_Rich/HammockDrivenDev.md)
 
 ## Snippets
 
