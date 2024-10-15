@@ -1,3 +1,3 @@
 #!/bin/bash
 
-pandoc --standalone -o "index.html" "root/index.md"
+pandoc --standalone -V pagetitle="Idle Hours" -o "index.html" "root/index.md"
