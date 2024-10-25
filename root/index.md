@@ -24,6 +24,7 @@
 ## PL Notes
 
 - [The Three Laws of Programming Language Design](https://joearms.github.io/published/2013-05-31-a-week-with-elixir.html#:~:text=The%20Three%20Laws%20of%20Programming%20Language%20Design)
+- [foo bar baz -- Common metasyntactic variables](http://www.catb.org/jargon/html/M/metasyntactic-variable.html)
 
 ## Snippets
 
