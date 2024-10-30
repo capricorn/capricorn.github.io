@@ -4,6 +4,7 @@
 
 ## Thoughts
 
+- <code>10/30/2024</code>&nbsp;&nbsp;[Retire at 62?](./entries/retire_62.html)
 - <code>10/23/2024</code>&nbsp;&nbsp;[A Satisfiability Problem](./entries/unsatisfiable_people.html)
 - <code>10/05/2024</code>&nbsp;&nbsp;[HTML Element Uniqueness](./entries/html_uniqueness.html)
 - <code>10/01/2024</code>&nbsp;&nbsp;[Redefinition - Dependency Injection Alternative?](./entries/di_alternative.html)
