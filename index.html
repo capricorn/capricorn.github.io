@@ -1,250 +1,432 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<html lang="" xml:lang="" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Idle Hours</title>
-  <style>
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport"/>
+<title>Idle Hours</title>
+<style>
+
     html {
+
       font-family: georgia;
+
       color: #1a1a1a;
+
       background-color: #fdfdfd;
+
     }
+
     body {
+
       margin: 0 auto;
+
       max-width: 36em;
+
       padding-left: 50px;
+
       padding-right: 50px;
+
       padding-top: 50px;
+
       padding-bottom: 50px;
+
       hyphens: auto;
+
       overflow-wrap: break-word;
+
       text-rendering: optimizeLegibility;
+
       font-kerning: normal;
+
     }
+
     @media (max-width: 600px) {
+
       body {
+
         font-size: 0.9em;
+
         padding: 12px;
+
       }
+
       h1 {
+
         font-size: 1.8em;
+
       }
+
     }
+
     @media print {
+
       html {
+
         background-color: white;
+
       }
+
       body {
+
         background-color: transparent;
+
         color: black;
+
         font-size: 12pt;
+
       }
+
       p, h2, h3 {
+
         orphans: 3;
+
         widows: 3;
+
       }
+
       h2, h3, h4 {
+
         page-break-after: avoid;
+
       }
+
     }
+
     p {
+
       margin: 1em 0;
+
     }
+
     a {
+
       color: #1a1a1a;
+
     }
+
     a:visited {
+
       color: #1a1a1a;
+
     }
+
     img {
+
       max-width: 100%;
+
     }
+
     svg {
+
       height: auto;
+
       max-width: 100%;
+
     }
+
     h1, h2, h3, h4, h5, h6 {
+
       margin-top: 1.4em;
+
     }
+
     h5, h6 {
+
       font-size: 1em;
+
       font-style: italic;
+
     }
+
     h6 {
+
       font-weight: normal;
+
     }
+
     ol, ul {
+
       padding-left: 1.7em;
+
       margin-top: 1em;
+
     }
+
     li > ol, li > ul {
+
       margin-top: 0;
+
     }
+
     blockquote {
+
       margin: 1em 0 1em 1.7em;
+
       padding-left: 1em;
+
       border-left: 2px solid #e6e6e6;
+
       color: #606060;
+
     }
+
     code {
+
       font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+
       font-size: 85%;
+
       margin: 0;
+
       hyphens: manual;
+
     }
+
     pre {
+
       margin: 1em 0;
+
       overflow: auto;
+
     }
+
     pre code {
+
       padding: 0;
+
       overflow: visible;
+
       overflow-wrap: normal;
+
     }
+
     .sourceCode {
+
      background-color: transparent;
+
      overflow: visible;
+
     }
+
     hr {
+
       background-color: #1a1a1a;
+
       border: none;
+
       height: 1px;
+
       margin: 1em 0;
+
     }
+
     table {
+
       margin: 1em 0;
+
       border-collapse: collapse;
+
       width: 100%;
+
       overflow-x: auto;
+
       display: block;
+
       font-variant-numeric: lining-nums tabular-nums;
+
     }
+
     table caption {
+
       margin-bottom: 0.75em;
+
     }
+
     tbody {
+
       margin-top: 0.5em;
+
       border-top: 1px solid #1a1a1a;
+
       border-bottom: 1px solid #1a1a1a;
+
     }
+
     th {
+
       border-top: 1px solid #1a1a1a;
+
       padding: 0.25em 0.5em 0.25em 0.5em;
+
     }
+
     td {
+
       padding: 0.125em 0.5em 0.25em 0.5em;
+
     }
+
     header {
+
       margin-bottom: 4em;
+
       text-align: center;
+
     }
+
     #TOC li {
+
       list-style: none;
+
     }
+
     #TOC ul {
+
       padding-left: 1.3em;
+
     }
+
     #TOC > ul {
+
       padding-left: 0;
+
     }
+
     #TOC a:not(:hover) {
+
       text-decoration: none;
+
     }
+
     code{white-space: pre-wrap;}
+
     span.smallcaps{font-variant: small-caps;}
+
     div.columns{display: flex; gap: min(4vw, 1.5em);}
+
     div.column{flex: auto; overflow-x: auto;}
+
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
     /* The extra [class] is a hack that increases specificity enough to
+
        override a similar rule in reveal.js */
+
     ul.task-list[class]{list-style: none;}
+
     ul.task-list li input[type="checkbox"] {
+
       font-size: inherit;
+
       width: 0.8em;
+
       margin: 0 0.8em 0.2em -1.6em;
+
       vertical-align: middle;
+
     }
+
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+
   </style>
-  <!--[if lt IE 9]>
+<!--[if lt IE 9]>
+
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+
   <![endif]-->
-</head>
+</head><!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-LTT14K9BQZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LTT14K9BQZ');
+</script>
 <body>
 <h1 id="idle-hours">Idle Hours</h1>
 <blockquote>
 <p>I never in all my walks came across a man engaged in so simple and
+
 natural an occupation as building his house.</p>
 </blockquote>
 <h2 id="thoughts">Thoughts</h2>
 <ul>
 <li><code>10/30/2024</code>  <a href="./entries/retire_62.html">Retire
+
 at 62?</a></li>
-<li><code>10/23/2024</code>  <a
-href="./entries/unsatisfiable_people.html">A Satisfiability
+<li><code>10/23/2024</code>  <a href="./entries/unsatisfiable_people.html">A Satisfiability
+
 Problem</a></li>
-<li><code>10/05/2024</code>  <a
-href="./entries/html_uniqueness.html">HTML Element Uniqueness</a></li>
-<li><code>10/01/2024</code>  <a
-href="./entries/di_alternative.html">Redefinition - Dependency Injection
+<li><code>10/05/2024</code>  <a href="./entries/html_uniqueness.html">HTML Element Uniqueness</a></li>
+<li><code>10/01/2024</code>  <a href="./entries/di_alternative.html">Redefinition - Dependency Injection
+
 Alternative?</a></li>
-<li><code>09/09/2024</code>  <a
-href="./entries/prolog_html.html">Experiment: HTML Scraping with
+<li><code>09/09/2024</code>  <a href="./entries/prolog_html.html">Experiment: HTML Scraping with
+
 Prolog</a></li>
-<li><code>07/01/2024</code>  <a
-href="./entries/prolog_ast_highlighter.html">AST Syntax Highlighting
+<li><code>07/01/2024</code>  <a href="./entries/prolog_ast_highlighter.html">AST Syntax Highlighting
+
 with Prolog</a></li>
 <li><code>06/19/2024</code>  <a href="./entries/conv_algebra.html">A
+
 2-Convolution Algebra of Sorts…</a></li>
 <li><code>06/16/2024</code>  <a href="./entries/pigeonhole.html">A
+
 Pigeonhole Proof</a></li>
 <li><code>06/13/2024</code>  <a href="./entries/regex_gen.html">Minimum
+
 Hamming Distance Convolution Traversal, Part I</a></li>
-<li><code>06/09/2024</code>  <a
-href="./entries/redistribution.html">Utilitarianism &amp; Wealth
+<li><code>06/09/2024</code>  <a href="./entries/redistribution.html">Utilitarianism &amp; Wealth
+
 Redistribution Noodlings</a></li>
 <li><code>06/05/2024</code>  <a href="./entries/random_book.html">When
+
 Was That Book Last Checked Out?</a></li>
-<li><code>06/05/2024</code>  <a
-href="./entries/common_truths.html">Common Sources of Truth</a></li>
+<li><code>06/05/2024</code>  <a href="./entries/common_truths.html">Common Sources of Truth</a></li>
 </ul>
 <h2 id="reads">Reads</h2>
 <ul>
-<li><a
-href="https://kazimirmajorinc.com/Documents/Edsger-W-Dijkstra-on-Lisp/index.html">Dijkstra
+<li><a href="https://kazimirmajorinc.com/Documents/Edsger-W-Dijkstra-on-Lisp/index.html">Dijkstra
+
 on Lisp</a></li>
-<li><a
-href="https://github.com/matthiasn/talk-transcripts/blob/master/Hickey_Rich/HammockDrivenDev.md">Hammock-driven
+<li><a href="https://github.com/matthiasn/talk-transcripts/blob/master/Hickey_Rich/HammockDrivenDev.md">Hammock-driven
+
 Development</a></li>
 </ul>
 <h2 id="pl-notes">PL Notes</h2>
 <ul>
-<li><a
-href="https://joearms.github.io/published/2013-05-31-a-week-with-elixir.html#:~:text=The%20Three%20Laws%20of%20Programming%20Language%20Design">The
+<li><a href="https://joearms.github.io/published/2013-05-31-a-week-with-elixir.html#:~:text=The%20Three%20Laws%20of%20Programming%20Language%20Design">The
+
 Three Laws of Programming Language Design</a></li>
-<li><a
-href="http://www.catb.org/jargon/html/M/metasyntactic-variable.html">foo
+<li><a href="http://www.catb.org/jargon/html/M/metasyntactic-variable.html">foo
+
 bar baz – Common metasyntactic variables</a></li>
 </ul>
 <h2 id="snippets">Snippets</h2>
 <ul>
 <li><a href="./entries/work_with_feet.html">Working With Your
+
 Feet</a></li>
 </ul>
 <h2 id="that-devilish-dutchman-dijkstra">That Devilish Dutchman
+
 Dijkstra</h2>
 <p><em>An EWD Anthology</em></p>
 <ul>
 <li><a href="https://www.cs.utexas.edu/~EWD/ewd08xx/EWD800.PDF">A
+
 bagatelle for the left hand</a></li>
 <li><a href="./entries/dijkstra_questions.html">Meta: Open
+
 Questions</a></li>
 </ul>
 <h2 id="search-engines">Search Engines</h2>
 <ul>
 <li><a href="https://hn.algolia.com/">Hacker News Search by
+
 Algolia</a></li>
 <li><a href="https://lobste.rs/search">Lobsters Search</a></li>
 <li><a href="https://search.marginalia.nu/">Marginalia.nu</a></li>
@@ -252,10 +434,10 @@ Algolia</a></li>
 </ul>
 <h2 id="etc">Etc</h2>
 <ul>
-<li><a
-href="https://gist.github.com/search?q=user%3Acapricorn+%23bookmarklet">Bookmarklets</a></li>
+<li><a href="https://gist.github.com/search?q=user%3Acapricorn+%23bookmarklet">Bookmarklets</a></li>
 </ul>
 <h2 id="contact">Contact</h2>
 <p><a href="mailto:collinplmr+hello@gmail.com">📧</a></p>
 </body>
 </html>
+
