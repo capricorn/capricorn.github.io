@@ -4,6 +4,7 @@
 
 ## Thoughts
 
+- <code>11/14/2024</code>&nbsp;&nbsp;[Precision, Division and Termination](./entries/precision_termination.html)
 - <code>11/04/2024</code>&nbsp;&nbsp;[Optimal Scraping Against Threshold Rate Limiters](./entries/threshold_limiter.html)
 - <code>10/30/2024</code>&nbsp;&nbsp;[Retire at 62?](./entries/retire_62.html)
 - <code>10/23/2024</code>&nbsp;&nbsp;[A Satisfiability Problem](./entries/unsatisfiable_people.html)
