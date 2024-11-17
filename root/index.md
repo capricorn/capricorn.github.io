@@ -46,6 +46,7 @@ _An EWD Anthology_
 - [Lobsters Search](https://lobste.rs/search)
 - [Marginalia.nu](https://search.marginalia.nu/)
 - [Kagi Small Web](https://kagi.com/smallweb)
+- [Archive.org (Book scans)](https://archive.org/search)
 
 ## Etc
 
