@@ -415,5 +415,36 @@ request. If a request arrives in the interim the cooldown resets.</li>
 <li>For serial requests, factoring in the actual request time. This
 itself establishes an approximate ceiling rate.</li>
 </ul>
+<h2 id="addendum-i">Addendum I</h2>
+<p>Consider the cumulative request count as a function of time,
+i.e. <span class="math inline">\(c(t)\)</span> is the total number of
+requests in <span class="math inline">\(t\)</span> seconds from the
+initial request <span class="math inline">\(t=0\)</span>. Once this
+request is made the limiter begins monitoring. Sometime later at <span
+class="math inline">\(t_1\)</span> the limit is exceeded. The attempted
+rate at <span class="math inline">\(t_1\)</span> is <span
+class="math inline">\(c(t_1)/t_1\)</span>; so for <span
+class="math inline">\(t&gt;0\)</span> the average rate is <span
+class="math inline">\(r(t)=c(t)/t\)</span>.</p>
+<p>Since no requests can be made while the rate limiter is active the
+rate begins to decay. With respect to <span
+class="math inline">\(t_1\)</span> this would be <span
+class="math inline">\(d(t)=c(t_1)/(t_1+t)\)</span>. A useful question in
+this case is to determine how many seconds until the rate decays to some
+rate of interest <span class="math inline">\(0&lt;q&lt;d(0)\)</span>.
+Solving for <span class="math inline">\(t\)</span> results in <span
+class="math inline">\(t=\frac{c(t_1)}{q}-t_1\)</span>.</p>
+<p>A concrete example: take the following sequence of <span
+class="math inline">\((t,c)\)</span>: <span
+class="math inline">\(((0,0),(25,5))\)</span>. At <span
+class="math inline">\(t=25\)</span> the rate limiter applies at 0.2
+req/sec. How much time should the requester wait until the limiter
+considers the next request to be at the rate 0.1 req/sec? <span
+class="math inline">\(q=1/10\)</span>, <span
+class="math inline">\(t_1=25\)</span>, <span
+class="math inline">\(c(t_1)=5\)</span>; <span
+class="math inline">\(t=5/0.1-25=25\)</span>. To check the work, waiting
+another 25 seconds would put the requests per sec at <span
+class="math inline">\(5/50 = 0.1\)</span>.</p>
 </body>
 </html>

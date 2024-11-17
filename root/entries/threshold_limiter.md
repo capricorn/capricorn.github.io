@@ -151,3 +151,18 @@ A few notes, other questions and other ideas:
 - Understanding effects of rounding: the domain is effectively continuous and this certainly has implications w.r.t a valid solution, search steps etc.
 - Different cooldown mechanism: a cooldown window $k$ minutes from the initial blocked request. If a request arrives in the interim the cooldown resets.
 - For serial requests, factoring in the actual request time. This itself establishes an approximate ceiling rate.
+
+## Addendum I
+
+Consider the cumulative request count as a function of time, i.e. $c(t)$ is the total number of requests
+in $t$ seconds from the initial request $t=0$. Once this request is made the limiter begins monitoring. 
+Sometime later at $t_1$ the limit is exceeded. The attempted rate at $t_1$ is $c(t_1)/t_1$; so for $t>0$ the average rate is $r(t)=c(t)/t$.
+
+Since no requests can be made while the rate limiter is active the rate begins to decay. With respect to $t_1$ this
+would be $d(t)=c(t_1)/(t_1+t)$. A useful question in this case is to determine how many seconds until the rate decays
+to some rate of interest $0<q<d(0)$. Solving for $t$ results in $t=\frac{c(t_1)}{q}-t_1$.
+
+A concrete example: take the following sequence of $(t,c)$: $((0,0),(25,5))$. At $t=25$ the rate limiter applies
+at 0.2 req/sec. How much time should the requester wait until the limiter considers the next request to be
+at the rate 0.1 req/sec? $q=1/10$, $t_1=25$, $c(t_1)=5$; $t=5/0.1-25=25$. To check the work, waiting another
+25 seconds would put the requests per sec at $5/50 = 0.1$.
