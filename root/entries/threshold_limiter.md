@@ -154,6 +154,8 @@ A few notes, other questions and other ideas:
 
 ## Addendum I
 
+_11/16/24_
+
 Consider the cumulative request count as a function of time, i.e. $c(t)$ is the total number of requests
 in $t$ seconds from the initial request $t=0$. Once this request is made the limiter begins monitoring. 
 Sometime later at $t_1$ the limit is exceeded. The attempted rate at $t_1$ is $c(t_1)/t_1$; so for $t>0$ the average rate is $r(t)=c(t)/t$.
