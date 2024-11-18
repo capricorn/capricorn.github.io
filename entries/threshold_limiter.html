@@ -447,5 +447,37 @@ class="math inline">\(c(t_1)=5\)</span>; <span
 class="math inline">\(t=5/0.1-25=25\)</span>. To check the work, waiting
 another 25 seconds would put the requests per sec at <span
 class="math inline">\(5/50 = 0.1\)</span>.</p>
+<h2 id="addendum-ii">Addendum II</h2>
+<p><em>11/18/24</em></p>
+<p>Say <span class="math inline">\(t_1\)</span> is when a cooldown
+period ends. As before, the average rate is then <span
+class="math display">\[
+\frac{c(t_1)}{t_1}
+\]</span> and continues to decay with time: <span
+class="math display">\[
+d(t)=\frac{c(t_1)}{t_1+t}
+\]</span></p>
+<p>Say that, immediately <em>after</em> the cooldown period requests
+begin again at rate <span class="math inline">\(r\)</span> req/sec; then
+the rate increase is determined by: <span class="math display">\[
+I(t)=\frac{c(t_1)+rt+1}{t_1+t}
+\]</span></p>
+<p>(ex: <span class="math inline">\(r=\frac{1}{5}\)</span>; a request is
+made immediately at <span class="math inline">\(t=0\)</span> hence the
+<span class="math inline">\(+1\)</span>. After 5 seconds, <span
+class="math inline">\(rt\)</span> counts another request.)</p>
+<p>Intuitively the above converges to the desired rate <span
+class="math inline">\(r\)</span>—a proof:</p>
+<p><span class="math display">\[\begin{align*}
+I(t) &amp;= \frac{c(t_1)+rt+1}{t_1+t}\\
+I(t) &amp;= \frac{c(t_1)+1}{t_1+t} + \frac{rt}{t_1+t}\\
+I(t) &amp;= \frac{c(t_1)+1}{t_1+t} +
+\frac{(\frac{1}{t})}{(\frac{1}{t})}\frac{rt}{t_1+t}\\
+I(t) &amp;= \frac{c(t_1)+1}{t_1+t} + \frac{r}{\frac{t_1}{t}+1}
+\end{align*}\]</span></p>
+<p>Taking the limit: <span class="math display">\[
+\lim_{t\to\infty} \frac{c(t_1)+1}{t_1+t} + \frac{r}{\frac{t_1}{t}+1} = 0
++ \frac{r}{0+1} = r
+\]</span></p>
 </body>
 </html>

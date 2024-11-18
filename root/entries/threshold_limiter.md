@@ -168,3 +168,39 @@ A concrete example: take the following sequence of $(t,c)$: $((0,0),(25,5))$. At
 at 0.2 req/sec. How much time should the requester wait until the limiter considers the next request to be
 at the rate 0.1 req/sec? $q=1/10$, $t_1=25$, $c(t_1)=5$; $t=5/0.1-25=25$. To check the work, waiting another
 25 seconds would put the requests per sec at $5/50 = 0.1$.
+
+## Addendum II
+
+_11/18/24_
+
+Say $t_1$ is when a cooldown period ends. As before, the average rate is then
+$$
+\frac{c(t_1)}{t_1}
+$$
+and continues to decay with time:
+$$
+d(t)=\frac{c(t_1)}{t_1+t}
+$$
+
+Say that, immediately _after_ the cooldown period requests begin again
+at rate $r$ req/sec; then the rate increase is determined by:
+$$
+I(t)=\frac{c(t_1)+rt+1}{t_1+t}
+$$
+
+(ex: $r=\frac{1}{5}$; a request is made immediately at $t=0$ hence the $+1$. After
+5 seconds, $rt$ counts another request.)
+
+Intuitively the above converges to the desired rate $r$---a proof:
+
+\begin{align*}
+I(t) &= \frac{c(t_1)+rt+1}{t_1+t}\\
+I(t) &= \frac{c(t_1)+1}{t_1+t} + \frac{rt}{t_1+t}\\
+I(t) &= \frac{c(t_1)+1}{t_1+t} + \frac{(\frac{1}{t})}{(\frac{1}{t})}\frac{rt}{t_1+t}\\
+I(t) &= \frac{c(t_1)+1}{t_1+t} + \frac{r}{\frac{t_1}{t}+1}
+\end{align*}
+
+Taking the limit:
+$$
+\lim_{t\to\infty} \frac{c(t_1)+1}{t_1+t} + \frac{r}{\frac{t_1}{t}+1} = 0 + \frac{r}{0+1} = r
+$$
