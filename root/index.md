@@ -21,7 +21,7 @@
 
 ## Recreations
 
-- [Little Lemma: Sorted Tuples](./entries/sorted_tuples.html) 
+- <code>12/09/2024</code>&nbsp;&nbsp;[Little Lemma: Sorted Tuples](./entries/sorted_tuples.html) 
 
 ## Reads
 
