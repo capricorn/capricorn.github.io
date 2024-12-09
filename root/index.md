@@ -19,6 +19,10 @@
 - <code>06/05/2024</code>&nbsp;&nbsp;[When Was That Book Last Checked Out?](./entries/random_book.html)
 - <code>06/05/2024</code>&nbsp;&nbsp;[Common Sources of Truth](./entries/common_truths.html)
 
+## Recreations
+
+- [Little Lemma: Sorted Tuples](./entries/sorted_tuples.html) 
+
 ## Reads
 
 - [Dijkstra on Lisp](https://kazimirmajorinc.com/Documents/Edsger-W-Dijkstra-on-Lisp/index.html)
