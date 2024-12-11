@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>counting_types</title>
+  <style>
+    html {
+      font-family: georgia;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="counting-type-composition">Counting Type Composition</h1>
+<p>One approach to type composition is the use of ‘sum’ and ‘product’
+types. For example, take the set of nominal types
+<code>T = {A,B,C}</code>. A type that conforms to A OR B (a sum type) is
+expressed as <code>A|B</code>. A type that conforms to B AND C (a
+product type) is expressed as <code>AB</code>. With these primitives
+it’s possible to construct more complex types such as
+<code>AB|C</code>.</p>
+<p>This raises the question: given <span
+class="math inline">\(T\)</span>, how many valid compositions are
+there?</p>
+<p>Well, examining products, there’s <code>AB, BC, B, ABC, ...</code>
+which intuitively is all possible combinations of <code>T</code>,
+i.e. the power set <span class="math inline">\(\mathcal{P}(T)\)</span>.
+But! This happens to include the empty set. For the sake of elegance I
+will include this type in the count. This is not too unusual; most
+languages have the concept of <code>Void</code> or something similar for
+optionals, etc.</p>
+<p>Now, given all the products, how many ways can they be combined
+(unioned together) as sum types? Since the sum is commutative just like
+products, this points again to combinations. That is, all possible
+combinations (sums) <em>of</em> the combinations (products.) So, the
+power set of the power set, <span
+class="math inline">\(\mathcal{P}(\mathcal{P}(T))\)</span>!</p>
+<p>It’s well known that the cardinality of the power set is <span
+class="math inline">\(2^N\)</span>. Therefore the power set of the power
+set has cardinality <span class="math inline">\(2^{2^N}\)</span>. With
+respect to the types <code>T</code> in question, there is another little
+edge case involving the empty set: <span
+class="math inline">\(\{\emptyset, \{\emptyset\}\}\ \subset
+\mathcal{P}(\mathcal{P}(T))\)</span>—which is to say, the empty set is
+counted twice. So, taking that into account, the total number of
+compositions is:</p>
+<p><span class="math display">\[
+2^{2^{|T|}}-1
+\]</span></p>
+<h2 id="generation-example-with-python">Generation example with
+Python</h2>
+<p>The following is a script to compute all the compositions and print
+them sorted:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>fset <span class="op">=</span> <span class="bu">frozenset</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> powerset(s):</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> s <span class="op">==</span> fset():</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> fset(fset())</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(s) <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> fset([fset(), s])</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    subsets <span class="op">=</span> fset()</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> e <span class="kw">in</span> s:</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        subsets <span class="op">=</span> subsets <span class="op">|</span> powerset(s<span class="op">-</span>fset([e]))</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> fset([s, <span class="op">*</span>subsets])</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>types <span class="op">=</span> powerset(powerset(fset([<span class="st">&#39;A&#39;</span>,<span class="st">&#39;B&#39;</span>,<span class="st">&#39;C&#39;</span>])))</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Oh my...</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>output <span class="op">=</span> <span class="st">&#39;</span><span class="ch">\n</span><span class="st">&#39;</span>.join(<span class="bu">sorted</span>([ <span class="co"># Sort by length and break ties lexicographically</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;|&#39;</span>.join([</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;&#39;</span>.join(prod_type <span class="cf">if</span> prod_type <span class="op">!=</span> fset() <span class="cf">else</span> <span class="st">&#39;V&#39;</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> prod_type <span class="kw">in</span> sum_type</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    ])</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Exclude {} to avoid double counting N</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> sum_type <span class="kw">in</span> types <span class="cf">if</span> sum_type <span class="op">!=</span> fset()</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>], key<span class="op">=</span>λ key: (<span class="bu">len</span>(key),key)))</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Len: 2^(2^|s|)-1</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(output)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(types <span class="op">-</span> fset([fset()])))</span></code></pre></div>
+<p><a
+href="https://gist.github.com/capricorn/9f916322510a3e2cfec23bfbec685afa">Github
+Gist</a></p>
+<p>And the output for <code>T={A,B,C}</code>. The empty set is printed
+as <code>V</code> here:</p>
+<pre><code>A
+B
+C
+V
+BA
+CA
+CB
+B|A
+B|C
+CBA
+C|A
+V|A
+V|B
+V|C
+A|CB
+BA|A
+BA|C
+B|BA
+B|CA
+B|CB
+CA|A
+CA|C
+C|CB
+V|BA
+V|CA
+V|CB
+BA|CA
+BA|CB
+B|C|A
+CA|CB
+CBA|A
+CBA|B
+CBA|C
+CBA|V
+V|B|A
+V|B|C
+V|C|A
+BA|C|A
+B|A|CB
+B|BA|A
+B|CA|A
+B|C|BA
+B|C|CA
+B|C|CB
+CBA|BA
+CBA|CA
+CBA|CB
+C|A|CB
+C|CA|A
+V|A|CB
+V|BA|A
+V|BA|C
+V|B|BA
+V|B|CA
+V|B|CB
+V|CA|A
+V|C|CA
+V|C|CB
+BA|A|CB
+BA|CA|A
+BA|C|CA
+BA|C|CB
+B|BA|CB
+B|CA|BA
+B|CA|CB
+CA|A|CB
+CBA|A|V
+CBA|B|A
+CBA|B|C
+CBA|B|V
+CBA|C|A
+CBA|C|V
+C|CA|CB
+V|BA|CA
+V|BA|CB
+V|B|C|A
+V|CA|CB
+BA|CA|CB
+B|CA|C|A
+B|C|A|CB
+B|C|BA|A
+CBA|A|CB
+CBA|BA|A
+CBA|BA|C
+CBA|BA|V
+CBA|B|BA
+CBA|B|CA
+CBA|B|CB
+CBA|CA|A
+CBA|CA|V
+CBA|C|CA
+CBA|C|CB
+CBA|V|CB
+V|BA|C|A
+V|B|A|CB
+V|B|BA|A
+V|B|CA|A
+V|B|CA|C
+V|B|C|BA
+V|B|C|CB
+V|CA|C|A
+V|C|A|CB
+BA|CA|C|A
+BA|C|A|CB
+B|BA|A|CB
+B|CA|A|CB
+B|CA|BA|A
+B|CA|C|BA
+B|CA|C|CB
+B|C|BA|CB
+CA|C|A|CB
+CBA|BA|CA
+CBA|BA|CB
+CBA|B|A|V
+CBA|B|C|A
+CBA|B|C|V
+CBA|CA|CB
+CBA|C|A|V
+V|BA|A|CB
+V|BA|CA|A
+V|BA|CA|C
+V|BA|C|CB
+V|B|BA|CB
+V|B|CA|BA
+V|B|CA|CB
+V|CA|A|CB
+V|CA|C|CB
+BA|CA|A|CB
+BA|CA|C|CB
+B|CA|BA|CB
+B|C|BA|V|A
+B|C|CA|V|A
+B|C|CB|V|A
+CBA|A|V|CB
+CBA|BA|A|V
+CBA|BA|C|A
+CBA|BA|C|V
+CBA|B|A|CB
+CBA|B|BA|A
+CBA|B|BA|V
+CBA|B|CA|A
+CBA|B|CA|C
+CBA|B|CA|V
+CBA|B|C|BA
+CBA|B|C|CB
+CBA|B|V|CB
+CBA|CA|A|V
+CBA|CA|C|A
+CBA|CA|C|V
+CBA|C|A|CB
+CBA|C|V|CB
+V|BA|CA|CB
+B|BA|CA|V|A
+B|BA|CB|V|A
+B|CA|CB|V|A
+B|C|BA|CA|A
+B|C|BA|CA|V
+B|C|BA|CB|A
+B|C|BA|CB|V
+B|C|CA|CB|A
+B|C|CA|CB|V
+B|C|CBA|V|A
+CBA|BA|A|CB
+CBA|BA|CA|A
+CBA|BA|CA|C
+CBA|BA|CA|V
+CBA|BA|C|CB
+CBA|BA|V|CB
+CBA|B|BA|CB
+CBA|B|CA|BA
+CBA|B|CA|CB
+CBA|CA|A|CB
+CBA|CA|C|CB
+CBA|CA|V|CB
+C|BA|CA|V|A
+C|BA|CB|V|A
+C|CA|CB|V|A
+BA|CA|CB|V|A
+B|BA|CA|CB|A
+B|BA|CA|CB|V
+B|CBA|BA|V|A
+B|CBA|CA|V|A
+B|CBA|CB|V|A
+B|C|BA|CA|CB
+B|C|CBA|BA|A
+B|C|CBA|BA|V
+B|C|CBA|CA|A
+B|C|CBA|CA|V
+B|C|CBA|CB|A
+B|C|CBA|CB|V
+CBA|BA|CA|CB
+C|BA|CA|CB|A
+C|BA|CA|CB|V
+C|CBA|BA|V|A
+C|CBA|CA|V|A
+C|CBA|CB|V|A
+B|CBA|BA|CA|A
+B|CBA|BA|CA|V
+B|CBA|BA|CB|A
+B|CBA|BA|CB|V
+B|CBA|CA|CB|A
+B|CBA|CA|CB|V
+B|C|BA|CA|V|A
+B|C|BA|CB|V|A
+B|C|CA|CB|V|A
+B|C|CBA|BA|CA
+B|C|CBA|BA|CB
+B|C|CBA|CA|CB
+CBA|BA|CA|V|A
+CBA|BA|CB|V|A
+CBA|CA|CB|V|A
+C|CBA|BA|CA|A
+C|CBA|BA|CA|V
+C|CBA|BA|CB|A
+C|CBA|BA|CB|V
+C|CBA|CA|CB|A
+C|CBA|CA|CB|V
+B|BA|CA|CB|V|A
+B|CBA|BA|CA|CB
+B|C|BA|CA|CB|A
+B|C|BA|CA|CB|V
+B|C|CBA|BA|V|A
+B|C|CBA|CA|V|A
+B|C|CBA|CB|V|A
+CBA|BA|CA|CB|A
+CBA|BA|CA|CB|V
+C|BA|CA|CB|V|A
+C|CBA|BA|CA|CB
+B|CBA|BA|CA|V|A
+B|CBA|BA|CB|V|A
+B|CBA|CA|CB|V|A
+B|C|CBA|BA|CA|A
+B|C|CBA|BA|CA|V
+B|C|CBA|BA|CB|A
+B|C|CBA|BA|CB|V
+B|C|CBA|CA|CB|A
+B|C|CBA|CA|CB|V
+C|CBA|BA|CA|V|A
+C|CBA|BA|CB|V|A
+C|CBA|CA|CB|V|A
+B|CBA|BA|CA|CB|A
+B|CBA|BA|CA|CB|V
+B|C|BA|CA|CB|V|A
+B|C|CBA|BA|CA|CB
+CBA|BA|CA|CB|V|A
+C|CBA|BA|CA|CB|A
+C|CBA|BA|CA|CB|V
+B|C|CBA|BA|CA|V|A
+B|C|CBA|BA|CB|V|A
+B|C|CBA|CA|CB|V|A
+B|CBA|BA|CA|CB|V|A
+B|C|CBA|BA|CA|CB|A
+B|C|CBA|BA|CA|CB|V
+C|CBA|BA|CA|CB|V|A
+B|C|CBA|BA|CA|CB|V|A
+255</code></pre>
+</body>
+</html>
