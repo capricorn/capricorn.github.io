@@ -43,6 +43,8 @@ _Coming soon..._
 
 _An EWD Anthology_
 
+- [Some meditations on Advanced Programming](https://www.cs.utexas.edu/~EWD/transcriptions/EWD00xx/EWD32.html)
+- [Programming Considered as a Human Activity](https://www.cs.utexas.edu/~EWD/transcriptions/EWD01xx/EWD117.html)
 - [A bagatelle for the left hand](https://www.cs.utexas.edu/~EWD/ewd08xx/EWD800.PDF)
 - [Meta: Open Questions](./entries/dijkstra_questions.html)
 
