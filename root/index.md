@@ -4,6 +4,7 @@
 
 ## Thoughts
 
+- <code>02/11/2025</code>&nbsp;&nbsp;["Computer Science"](./entries/computer_science.html)
 - <code>12/10/2024</code>&nbsp;&nbsp;[Flattening Trees From Recursive Functions](./entries/tidbit_recursion.html)
 - <code>12/10/2024</code>&nbsp;&nbsp;[Counting Type Composition](./entries/counting_types.html)
 - <code>11/14/2024</code>&nbsp;&nbsp;[Precision, Division and Termination](./entries/precision_termination.html)
