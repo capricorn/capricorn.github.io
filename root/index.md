@@ -11,4 +11,8 @@
 - <code>07/01/2024</code>&nbsp;&nbsp;[AST Syntax Highlighting with Prolog](./entries/prolog_ast_highlighter.html)
 - <code>06/13/2024</code>&nbsp;&nbsp;[Minimum Hamming Distance Convolution Traversal, Part I](./entries/regex_gen.html)
 
+## Etc
+
+- [Walking](./entries/walking.html)
+
 [📧](mailto:collinplmr+hello@gmail.com)
